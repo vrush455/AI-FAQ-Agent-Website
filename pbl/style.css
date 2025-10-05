@@ -1,0 +1,224 @@
+/**
+ * =====================================
+ *         UI DESIGN SYSTEM
+ * =====================================
+ * 
+ * Project: MIT ADT University AI FAQ Agent
+ * Type: Educational Chatbot Interface
+ * 
+ * DESIGN PHILOSOPHY
+ * -----------------
+ * Core Principle: Instant relief from academic confusion through elegant simplicity
+ * Design Style: Modern Academic with MIT ADT Brand Integration
+ * Emotion Goal: Confidence, Trust, and Academic Excellence
+ * 
+ * COLOR SYSTEM (MIT ADT INSPIRED)
+ * -------------
+ * Primary: 210 100% 45% - MIT ADT Deep Blue (Trust & Academic Excellence)
+ * Secondary: 151 60% 45% - Campus Green (Growth & Nature)
+ * Accent: 39 100% 50% - Golden Excellence (Achievement & Success)
+ * Campus: 195 100% 85% - Sky Blue (Open Learning Environment)
+ * 
+ * TYPOGRAPHY
+ * ----------
+ * Display: Inter Bold - Modern academic headlines
+ * Body: Inter Regular - Clear readable content
+ * 
+ * INTERACTIONS
+ * ------------
+ * Transitions: 300ms ease-in-out for academic elegance
+ * States: Complete coverage with MIT ADT styling
+ * Campus Integration: Real MIT ADT images for immersion
+ * ====================================
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 25% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+    
+    /* MIT ADT Brand Colors */
+    --primary: 210 100% 45%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 151 60% 45%;
+    --secondary-foreground: 0 0% 98%;
+    --accent: 39 100% 50%;
+    --accent-foreground: 215 25% 15%;
+    --campus: 195 100% 85%;
+    --campus-foreground: 215 25% 15%;
+    
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 46%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 40% 90%;
+    --input: 210 40% 90%;
+    --ring: 210 100% 45%;
+    --radius: 0.75rem;
+    
+    /* Chat specific colors */
+    --chat-user: 210 100% 45%;
+    --chat-user-foreground: 0 0% 98%;
+    --chat-bot: 210 40% 96%;
+    --chat-bot-foreground: 215 25% 15%;
+    --typing-indicator: 151 60% 45%;
+  }
+
+  .dark {
+    --background: 215 28% 8%;
+    --foreground: 210 40% 96%;
+    --card: 215 28% 10%;
+    --card-foreground: 210 40% 96%;
+    --popover: 215 28% 10%;
+    --popover-foreground: 210 40% 96%;
+    
+    --primary: 210 100% 60%;
+    --primary-foreground: 215 28% 8%;
+    --secondary: 151 45% 35%;
+    --secondary-foreground: 210 40% 96%;
+    --accent: 39 100% 60%;
+    --accent-foreground: 215 28% 8%;
+    --campus: 195 80% 25%;
+    --campus-foreground: 210 40% 96%;
+    
+    --muted: 215 28% 15%;
+    --muted-foreground: 215 20% 65%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 96%;
+    --border: 215 28% 20%;
+    --input: 215 28% 15%;
+    --ring: 210 100% 60%;
+    
+    --chat-user: 210 100% 60%;
+    --chat-user-foreground: 215 28% 8%;
+    --chat-bot: 215 28% 15%;
+    --chat-bot-foreground: 210 40% 96%;
+    --typing-indicator: 151 45% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-['Inter'];
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+}
+
+@layer components {
+  /* Campus Background Patterns */
+  .campus-gradient {
+    background: linear-gradient(135deg, 
+      hsl(var(--primary) / 0.05) 0%, 
+      hsl(var(--secondary) / 0.05) 50%,
+      hsl(var(--campus) / 0.1) 100%);
+  }
+  
+  .mit-pattern {
+    background-image: 
+      radial-gradient(circle at 1px 1px, 
+      hsl(var(--primary) / 0.1) 1px, 
+      transparent 0);
+    background-size: 20px 20px;
+  }
+  
+  /* Chat Animations */
+  .typing-dots {
+    @apply flex space-x-1;
+  }
+  
+  .typing-dot {
+    @apply w-2 h-2 rounded-full bg-[hsl(var(--typing-indicator))] animate-bounce;
+    animation-delay: var(--delay, 0ms);
+  }
+  
+  .message-appear {
+    animation: messageSlideIn 0.3s ease-out forwards;
+  }
+  
+  @keyframes messageSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* MIT ADT Specific Styles */
+  .mit-card {
+    @apply bg-card border border-border rounded-xl shadow-lg backdrop-blur-sm;
+    background: linear-gradient(135deg, 
+      hsl(var(--card)) 0%, 
+      hsl(var(--muted) / 0.5) 100%);
+  }
+  
+  .campus-hero {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.9) 0%,
+      hsl(var(--secondary) / 0.8) 100%
+    );
+  }
+  
+  /* Success States */
+  .success-pulse {
+    animation: successPulse 1s ease-in-out;
+  }
+  
+  @keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Mobile Optimizations */
+  @media (max-width: 768px) {
+    .chat-container {
+      @apply px-2 pb-4;
+    }
+    
+    .campus-hero {
+      @apply min-h-[60vh];
+    }
+  }
+}
+
+/* Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+  .typing-dot,
+  .message-appear,
+  .success-pulse {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border: 215 25% 70%;
+  }
+  
+  .dark {
+    --border: 210 40% 30%;
+  }
+}
